@@ -1,0 +1,28 @@
+<%- include('includes/head') %>
+<%- include('includes/nav') %>
+<head><link rel="stylesheet" href="/assets/css/style-novaInstrucao.css"></head>
+<section class="container-instrucao">
+    <div>
+        <img src="/assets/img/add (2) 1.png" alt="">
+        <h1>Nova Instrução</h1>
+    </div>
+
+    <form class="formulario-novaInstrucao" action="/" id="formulario-novaInstrucao" method="POST">
+        <label for="categoria-instrucao">Categoria:</label>
+        <input type="text" id="categoria-instrucao" name="categoria-instrucao">
+
+        <label for="tema-instrucao">Tema:</label>
+        <input type="text" id="tema-instrucao" name="tema-instrucao">
+
+        <label for="descricao-instrucao">Descrição:</label>
+        <textarea name="descricao-instrucao" id="descricao-instrucao" cols="30" rows="10"></textarea>
+
+        <button class="cancelar-instrucao" type="submit"> Cancelar</button>
+        <button class="confirmar-instrucao" type="submit">Salvar</button>
+        
+    </form>
+    <input type="file" class="arquivos-instrucao">
+
+
+</section>
+<%- include('includes/footer') %>
