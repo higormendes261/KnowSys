@@ -8,20 +8,26 @@
     <div class="col-lg-8 my-3">
       <h1 class="text-center">KnowSys</h1>
       <p class="text-center lead">Usuarios estão abaixo</p>
+      <div class="responsive-table">
+        <table class="table my-3">
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">Matricula</th>
+        <th scope="col">Email</th>
+        <th scope="row" colspan="4">Opções</th>
+      </tr>
+    <tr>
 
       <%- include('includes/messages') %>
 
-      <% if(contatos.length > 0) { %>
-      <div class="responsive-table">
-        <table class="table my-3">
-          <% contatos.forEach(contato => { %>
-          <tr>
-            <td><%= contato.nome %></td>
-            <td><%= contato.sobrenome %></td>
-            <td><%= contato.telefone %></td>
-            <td><%= contato.email %></td>
-            <td><a href="/contato/index/<%= contato._id %>">Editar</a></td>
-            <td><a class="text-danger" href="/contato/delete/<%= contato._id %>">Excluir</a></td>
+      <% if(usuario.length > 0) { %>
+
+          <% usuario.forEach(usuario => { %>
+            <td><%= usuario.nome %></td>
+            <td><%= usuario.matricula %></td>
+            <td><%= usuario.email %></td>
+            <td><a href="/editarUsuario/index/<%= usuario._id %>">Editar</a></td>
+            <td><a class="text-danger" href="/editarUsuario/delete/<%= usuario._id %>">Excluir</a></td>
           </tr>
           <% }); %>
         </table>

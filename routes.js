@@ -3,11 +3,10 @@ const route = express.Router();
 
 const homeController = require('./src/controllers/homeController');
 const loginController = require('./src/controllers/loginController');
-const contatoController = require('./src/controllers/contatoController');
+const editarUsuarioController = require('./src/controllers/editarUsuarioController');
 const cadastroController = require('./src/controllers/cadastroController');
 const duvidasController = require('./src/controllers/duvidasController');
 const novaInstrucaoController = require('./src/controllers/novaInstrucaoController');
-const editarUsuariosController = require('./src/controllers/editarUsuariosController');
 
 const { loginRequired } = require('./src/middlewares/middleware');
 
@@ -23,20 +22,19 @@ route.get('/login/logout', loginController.logout);
 route.get('/cadastro/index', cadastroController.index);
 route.post('/cadastro/register', cadastroController.register);
 
-// Rotas de contato
-route.get('/contato/index', loginRequired, contatoController.index);
-route.post('/contato/register', loginRequired, contatoController.register);
-route.get('/contato/index/:id', loginRequired, contatoController.editIndex);
-route.post('/contato/edit/:id', loginRequired, contatoController.edit);
-route.get('/contato/delete/:id', loginRequired, contatoController.delete);
+// Rotas de editar usuarios
+route.get('/editarUsuario/index', loginRequired, editarUsuarioController.index);
+route.post('/editarUsuario/register', loginRequired, editarUsuarioController.register);
+route.get('/editarUsuario/index/:id', loginRequired, editarUsuarioController.editIndex);
+route.post('/editarUsuario/edit/:id', loginRequired, editarUsuarioController.edit);
+route.get('/editarUsuario/delete/:id', loginRequired, editarUsuarioController.delete);
 
 // Rotas de dúvidas
 route.get('/duvidas/index', duvidasController.index);
 
 //Rota de instrução
-route.get('/novaInstrucao/index', novaInstrucaoController.index);
+route.get('/novaInstrucao/index', loginRequired, novaInstrucaoController.index);
+route.post('/novaInstrucao/register', loginRequired, novaInstrucaoController.register);
 
-//Rota de editar usuarios
-route.get('/editarUsuarios/index', editarUsuariosController.index);
 
 module.exports = route;

@@ -5,7 +5,7 @@ exports.index = (req, res) => {
   return res.render('login');
 };
 
-exports.register = async function(req, res) {
+/* exports.register = async function(req, res) {
   try {
     const login = new Login(req.body);
     await login.register();
@@ -26,7 +26,7 @@ exports.register = async function(req, res) {
     console.log(e);
     return res.render('404');
   }
-};
+}; */
 
 exports.login = async function(req, res) {
   try {

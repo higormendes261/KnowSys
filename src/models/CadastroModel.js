@@ -4,7 +4,12 @@ const bcryptjs = require('bcryptjs');
 
 const CadastroSchema = new mongoose.Schema({
   email: { type: String, required: true },
-  password: { type: String, required: true }
+  inputNomeEmpresa: { type: String, required: true},
+  inputCnpjEmpresa: { type: String, required: true},
+  inputEmailEmpresa: { type: String, requered: true},
+  password: { type: String, required: true },
+  inputConfirmacaoSenhaModerador: {type: String, requered: true},
+  tipoUsuario: {type: String, requered: true}
 });
 
 const CadastroModel = mongoose.model('Cadastro', CadastroSchema);
@@ -14,23 +19,6 @@ class Cadastro {
     this.body = body;
     this.errors = [];
     this.user = null;
-  }
-
-  async Cadastro() {
-    this.valida();
-    if(this.errors.length > 0) return;
-    this.user = await CadastroModel.findOne({ email: this.body.email });
-
-    if(!this.user) {
-      this.errors.push('Usuário não existe.');
-      return;
-    }
-
-    if(!bcryptjs.compareSync(this.body.password, this.user.password)) {
-      this.errors.push('Senha inválida');
-      this.user = null;
-      return;
-    }
   }
 
   async register() {
@@ -53,18 +41,33 @@ class Cadastro {
   }
 
   valida() {
-    this.cleanUp();
-
     // Validação
-    // O e-mail precisa ser válido
-    if(!validator.isEmail(this.body.email)) this.errors.push('E-mail inválido');
 
+    this.cleanUp();
+    if(this.body.inputNomeEmpresa.length < 1){
+      this.errors.push('O nome da empresa não pode ser vazio.');
+    }
+    
+    
+    if(this.body.inputCnpjEmpresa.length < 18){
+      this.errors.push('CNPJ inválido.');
+    }
+    
+    if(!validator.isEmail(this.body.inputEmailEmpresa)) this.errors.push('E-mail da empresa inválido.');
+    
+    // O e-mail precisa ser válido
+    if(!validator.isEmail(this.body.email)) this.errors.push('E-mail do moderador inválido.');
     // A senha precisa ter entre 3 e 50
     if(this.body.password.length < 3 || this.body.password.length > 50) {
       this.errors.push('A senha precisa ter entre 3 e 50 caracteres.');
     }
-  }
 
+    if(this.body.password !== this.body.inputConfirmacaoSenhaModerador){
+      this.errors.push('As senhas não coincidem.');
+    }
+    
+  }
+  
   cleanUp() {
     for(const key in this.body) {
       if(typeof this.body[key] !== 'string') {
@@ -74,7 +77,12 @@ class Cadastro {
 
     this.body = {
       email: this.body.email,
-      password: this.body.password
+      password: this.body.password,
+      inputNomeEmpresa: this.body.inputNomeEmpresa,
+      inputCnpjEmpresa: this.body.inputCnpjEmpresa,
+      inputEmailEmpresa: this.body.inputEmailEmpresa,
+      inputConfirmacaoSenhaModerador: this.body.inputConfirmacaoSenhaModerador,
+      tipoUsuario: this.body.tipoUsuario
     };
   }
 }

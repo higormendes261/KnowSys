@@ -42,6 +42,7 @@ body {
     height: 40px;
     width: 189px;
     border: 1px solid #428383;
+    margin-bottom: 80px;
 }
 
 .formulario-cadastro button:hover {
@@ -52,7 +53,7 @@ input:focus {
     outline: 1px solid rgb(9, 48, 56);
 }
 
-#input-nomeEmpresa {
+#inputNomeEmpresa {
     width: 100%;
 }
 
@@ -83,6 +84,7 @@ input:focus {
 .subtitulo {
     text-align: center;
     font-size: 36px;
+    margin-bottom: 30px;
 }
 
 #inputEmailModerador{
@@ -97,13 +99,13 @@ input:focus {
 .section-dadosModerador{
     display: flex;
     width: 100%;
-    margin-bottom: 15px;
 }
 
 #inputSenhaModerador{
     width: 360px;
     margin-right: 40px;
 }
+
 
 #input-confirmacaoSenhaModerador{
     width: 500px;
@@ -112,14 +114,14 @@ input:focus {
 .formulario-cadastro h1 {
     font-size: 40px;
     padding: 20px 0;
-
+    margin-bottom: 30px;
 }
 
 .formulario-cadastro img {
     background-color: #3CDDDD;
     border-radius: 15px;
     padding: 10px;
-    margin: 0  15px 0 0;
+    margin: 0  15px 30px 0;
 }
 
 .formulario-cadastro div {
@@ -127,6 +129,17 @@ input:focus {
     align-items: center;
 
 }
-.voltar{
-    padding: 10px 0 0 15px;
+
+.label-nomeModerador{
+    width: 360px;
+    margin-right: 40px;
+}
+
+#inputNomeModerador{
+    width: 360px;
+    margin-right: 40px;
+}
+
+#inputMatriculaModerador{
+    width: 500px;
 }
