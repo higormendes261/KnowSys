@@ -1,7 +1,7 @@
 const express = require('express');
 const route = express.Router();
 
-const homeController = require('./src/controllers/homeController');
+const usuariosController = require('./src/controllers/usuariosController');
 const loginController = require('./src/controllers/loginController');
 const editarUsuarioController = require('./src/controllers/editarUsuarioController');
 const cadastroController = require('./src/controllers/cadastroController');
@@ -11,7 +11,7 @@ const novaInstrucaoController = require('./src/controllers/novaInstrucaoControll
 const { loginRequired } = require('./src/middlewares/middleware');
 
 // Rotas da home
-route.get('/', homeController.index);
+route.get('/usuarios/index', loginRequired, usuariosController.index);
 
 // Rotas de login
 route.get('/login/index', loginController.index);
