@@ -8,6 +8,7 @@ const cadastroController = require('./src/controllers/cadastroController');
 const duvidasController = require('./src/controllers/duvidasController');
 const novaInstrucaoController = require('./src/controllers/novaInstrucaoController');
 const instrucoesController = require('./src/controllers/instrucoesController');
+const homeController = require('./src/controllers/homeController');
 
 const { loginRequired } = require('./src/middlewares/middleware');
 
@@ -42,7 +43,8 @@ route.get('/novaInstrucao/index/:id', loginRequired, novaInstrucaoController.edi
 route.post('/novaInstrucao/edit/:id', loginRequired, novaInstrucaoController.edit);
 route.get('/novaInstrucao/delete/:id', loginRequired, novaInstrucaoController.delete);
 
-//route.get('/instrucao/register', instrucoesController.register);
+//Rota para home
+route.get('/home/index', homeController.index);
 
 
 module.exports = route;
