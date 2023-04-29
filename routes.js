@@ -13,7 +13,6 @@ const { loginRequired } = require('./src/middlewares/middleware');
 
 // Rotas da home
 route.get('/', loginController.index);
-route.get('/usuarios/index', loginRequired, usuariosController.index);
 
 // Rotas de login
 route.get('/login/index', loginController.index);
@@ -25,6 +24,7 @@ route.get('/cadastro/index', cadastroController.index);
 route.post('/cadastro/register', cadastroController.register);
 
 // Rotas de editar usuarios
+route.get('/usuarios/index', loginRequired, usuariosController.index);
 route.get('/editarUsuario/index', loginRequired, editarUsuarioController.index);
 route.post('/editarUsuario/register', loginRequired, editarUsuarioController.register);
 route.get('/editarUsuario/index/:id', loginRequired, editarUsuarioController.editIndex);
@@ -35,9 +35,13 @@ route.get('/editarUsuario/delete/:id', loginRequired, editarUsuarioController.de
 route.get('/duvidas/index', duvidasController.index);
 
 //Rota de instrução
+route.get('/instrucao/index', loginRequired, instrucoesController.index);
 route.get('/novaInstrucao/index', loginRequired, novaInstrucaoController.index);
 route.post('/novaInstrucao/register', loginRequired, novaInstrucaoController.register);
-route.get('/instrucao/index', instrucoesController.index);
+route.get('/novaInstrucao/index/:id', loginRequired, novaInstrucaoController.editIndex);
+route.post('/novaInstrucao/edit/:id', loginRequired, novaInstrucaoController.edit);
+route.get('/novaInstrucao/delete/:id', loginRequired, novaInstrucaoController.delete);
+
 //route.get('/instrucao/register', instrucoesController.register);
 
 

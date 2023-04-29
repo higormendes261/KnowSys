@@ -28,7 +28,6 @@ Instrucao.prototype.valida = function() {
   this.cleanUp();
 
   // Validação
-  // O e-mail precisa ser válido
   if(!this.body.categoriaInstrucao) this.errors.push('O campo "Categoria" precisa ser preenchido.');
   if(!this.body.temaInstrucao) this.errors.push('O campo "Título"  precisa ser preenchido.');
   if(!this.body.descricaoInstrucao) this.errors.push('O campo "Descrição" precisa ser preenchido.');
