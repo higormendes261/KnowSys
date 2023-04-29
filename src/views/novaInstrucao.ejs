@@ -8,7 +8,7 @@
     </div>
     <%- include('includes/messages'); %>
 
-
+    
     <form class="formulario-novaInstrucao" action="/novaInstrucao/register" id="formulario-novaInstrucao" method="POST">
         <input type="hidden" name="_csrf" value=<%= csrfToken %>>
         <label for="categoria-instrucao">Categoria:</label>
@@ -21,7 +21,7 @@
         <textarea name="descricaoInstrucao" id="descricao-instrucao" cols="30" rows="10"></textarea>
 
         <!-- <button class="cancelar-instrucao" type="submit"> Cancelar</button> -->
-        <button class="confirmar-instrucao" type="submit">Salvar</button>
+        <button class="btn btn-primary" type="submit">Salvar</button>
         
     </form>
     <input type="file" class="arquivos-instrucao">

@@ -34,8 +34,6 @@ Usuario.prototype.valida = function() {
   if(!this.body.email) this.errors.push('Email é um campo obrigatório.');
   if(this.body.email && !validator.isEmail(this.body.email)) this.errors.push('E-mail inválido');
   if(!this.body.senha) this.errors.push('Senha é um campo obrigatório.');
-
- 
 };
 
 Usuario.prototype.cleanUp = function() {

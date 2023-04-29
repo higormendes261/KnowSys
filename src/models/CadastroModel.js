@@ -82,7 +82,7 @@ class Cadastro {
       inputCnpjEmpresa: this.body.inputCnpjEmpresa,
       inputEmailEmpresa: this.body.inputEmailEmpresa,
       inputConfirmacaoSenhaModerador: this.body.inputConfirmacaoSenhaModerador,
-      tipoUsuario: this.body.tipoUsuario
+      tipoUsuario: this.body.tipo
     };
   }
 }

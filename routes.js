@@ -7,10 +7,12 @@ const editarUsuarioController = require('./src/controllers/editarUsuarioControll
 const cadastroController = require('./src/controllers/cadastroController');
 const duvidasController = require('./src/controllers/duvidasController');
 const novaInstrucaoController = require('./src/controllers/novaInstrucaoController');
+const instrucoesController = require('./src/controllers/instrucoesController');
 
 const { loginRequired } = require('./src/middlewares/middleware');
 
 // Rotas da home
+route.get('/', loginController.index);
 route.get('/usuarios/index', loginRequired, usuariosController.index);
 
 // Rotas de login
@@ -35,6 +37,8 @@ route.get('/duvidas/index', duvidasController.index);
 //Rota de instrução
 route.get('/novaInstrucao/index', loginRequired, novaInstrucaoController.index);
 route.post('/novaInstrucao/register', loginRequired, novaInstrucaoController.register);
+route.get('/instrucao/index', instrucoesController.index);
+//route.get('/instrucao/register', instrucoesController.register);
 
 
 module.exports = route;

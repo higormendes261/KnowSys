@@ -1,7 +1,10 @@
-const Instrucao = require('../models/NovaInstrucaoModel');
+const Instrucao = require('../models/InstrucaoModel');
+
 exports.index = (req, res) => {
-    res.render('novaInstrucao');
-}
+    res.render('novaInstrucao', {
+      instrucao: {}
+    });
+  };
 
 exports.register = async function(req, res) {
     try {
@@ -10,16 +13,13 @@ exports.register = async function(req, res) {
   
       if(instrucao.errors.length > 0) {
         req.flash('errors', instrucao.errors);
-        req.session.save(function() {
-          return res.redirect('back');
-        });
+        req.session.save(() => res.redirect('back'));
         return;
       }
   
-      req.flash('success', 'Sua instrução foi criada com sucesso.');
-      req.session.save(function() {
-        return res.redirect('back');
-      });
+      req.flash('success', 'Instrução registrada com sucesso.');
+      req.session.save(() => res.redirect(`/instrucao/index/`));
+      return;
     } catch(e) {
       console.log(e);
       return res.render('404');
