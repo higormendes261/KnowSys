@@ -27,7 +27,6 @@ route.post('/cadastro/register', cadastroController.register);
 // Rotas de editar usuarios
 route.get('/usuarios/index', loginRequired, usuariosController.index);
 route.get('/editarUsuario/index', loginRequired, editarUsuarioController.index);
-route.post('/editarUsuario/register', loginRequired, editarUsuarioController.register);
 route.get('/editarUsuario/index/:id', loginRequired, editarUsuarioController.editIndex);
 route.post('/editarUsuario/edit/:id', loginRequired, editarUsuarioController.edit);
 route.get('/editarUsuario/delete/:id', loginRequired, editarUsuarioController.delete);

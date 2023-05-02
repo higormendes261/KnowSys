@@ -1,4 +1,4 @@
-const Usuario = require('../models/UsuarioModel');
+const Usuario = require('../models/CadastroModel');
 
 exports.index = async(req, res) => {
   const usuario = await Usuario.buscaUsuario();

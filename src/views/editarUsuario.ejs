@@ -14,17 +14,20 @@
       <% if(usuario._id) { %>
       <form action="/editarUsuario/edit/<%= usuario._id %>" method="POST">
       <% } else { %>
-      <form action="/editarUsuario/register" method="POST">
+      <form action="/cadastro/register" method="POST">
       <% } %>
         <input type="hidden" name="_csrf" value=<%= csrfToken %>>
         <input type="hidden" name="tipoUsuario" value="usuario">
+        <input type="hidden" name="inputNomeEmpresa" value=<%= user.inputNomeEmpresa %>>
+        <input type="hidden" name="inputCnpjEmpresa" value=<%= user.inputCnpjEmpresa %>>
+        <input type="hidden" name="inputEmailEmpresa" value=<%= user.inputEmailEmpresa %>>
         <div class="form-group">
           <label>Nome</label>
-          <input value="<%= usuario.nome %>" type="text" class="form-control" name="nome">
+          <input value="<%= usuario.nome %>" type="text" class="form-control" name="inputNome">
         </div>
         <div class="form-group">
           <label>Matrícula</label>
-          <input value="<%= usuario.matricula %>" type="text" class="form-control" name="matricula">
+          <input value="<%= usuario.matricula %>" type="text" class="form-control" name="inputMatricula">
         </div>
         <div class="form-group">
           <label>Email</label>
@@ -32,15 +35,15 @@
         </div>
         <div class="form-group">
           <label>Senha</label>
-          <input value="<%= usuario.senha %>" type="password" class="form-control" name="senha">
+          <input value="<%= usuario.senha %>" type="password" class="form-control" name="password">
+        </div>
+        <div class="form-group">
+          <label>Confirme a senha</label>
+          <input value="<%= usuario.senha %>" type="password" class="form-control" name="inputConfirmacaoSenhaModerador">
         </div>
         <button type="submit" class="btn btn-primary">Salvar</button>
       </form>
-
-
-
-    </div>
-    
+    </div>    
     <div class="col-lg-2"></div>
   </div>
 </div>

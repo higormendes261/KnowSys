@@ -9,6 +9,7 @@ const LoginSchema = new mongoose.Schema({
 
 const LoginModel = mongoose.model('cadastro', LoginSchema);
 
+
 class Login {
   constructor(body) {
     this.body = body;

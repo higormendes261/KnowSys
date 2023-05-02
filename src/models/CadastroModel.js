@@ -4,12 +4,14 @@ const bcryptjs = require('bcryptjs');
 
 const CadastroSchema = new mongoose.Schema({
   email: { type: String, required: true },
+  inputNome: { type: String, required: true},
   inputNomeEmpresa: { type: String, required: true},
   inputCnpjEmpresa: { type: String, required: true},
   inputEmailEmpresa: { type: String, requered: true},
   password: { type: String, required: true },
-  inputConfirmacaoSenhaModerador: {type: String, requered: true},
-  tipoUsuario: {type: String, requered: true}
+  tipoUsuario: {type: String, requered: true},
+  inputMatricula: {type: String, requered: true}
+
 });
 
 const CadastroModel = mongoose.model('Cadastro', CadastroSchema);
@@ -56,7 +58,7 @@ class Cadastro {
     if(!validator.isEmail(this.body.inputEmailEmpresa)) this.errors.push('E-mail da empresa inválido.');
     
     // O e-mail precisa ser válido
-    if(!validator.isEmail(this.body.email)) this.errors.push('E-mail do moderador inválido.');
+    if(!validator.isEmail(this.body.email)) this.errors.push('E-mail inválido.');
     // A senha precisa ter entre 3 e 50
     if(this.body.password.length < 3 || this.body.password.length > 50) {
       this.errors.push('A senha precisa ter entre 3 e 50 caracteres.');
@@ -78,13 +80,68 @@ class Cadastro {
     this.body = {
       email: this.body.email,
       password: this.body.password,
+      inputNome: this.body.inputNome,
       inputNomeEmpresa: this.body.inputNomeEmpresa,
       inputCnpjEmpresa: this.body.inputCnpjEmpresa,
       inputEmailEmpresa: this.body.inputEmailEmpresa,
       inputConfirmacaoSenhaModerador: this.body.inputConfirmacaoSenhaModerador,
-      tipoUsuario: this.body.tipo
+      tipoUsuario: this.body.tipoUsuario,
+      inputMatricula: this.body.inputMatricula
     };
   }
 }
 
+exports.delete = async function(req, res) {
+  if(!req.params.id) return res.render('404');
+
+  const usuario = await Usuario.delete(req.params.id);
+  if(!usuario) return res.render('404');
+
+  req.flash('success', 'Usuario apagado com sucesso.');
+  req.session.save(() => res.redirect('back'));
+  return;
+};
+
+Cadastro.prototype.cleanUp = function() {
+  for(const key in this.body) {
+    if(typeof this.body[key] !== 'string') {
+      this.body[key] = '';
+    }
+  }
+  
+  this.body = {
+    nome: this.body.nome,
+    matricula: this.body.matricula,
+    email: this.body.email,
+    senha: this.body.senha,
+  };
+};
+
+Cadastro.prototype.edit = async function(id) {
+  if(typeof id !== 'string') return;
+  this.valida();
+  if(this.errors.length > 0) return;
+  this.user = await CadastroModel.findByIdAndUpdate(id, this.body, { new: true });
+};
+
+// Métodos estáticos
+Cadastro.buscaPorId = async function(id) {
+  if(typeof id !== 'string') return;
+  const usuario = await CadastroModel.findById(id);
+  return usuario;
+};
+
+Cadastro.buscaUsuario = async function() {
+  const usuario = await CadastroModel.find()
+  .sort({ criadoEm: -1 });
+  return usuario;
+};
+
+Cadastro.delete = async function(id) {
+  if(typeof id !== 'string') return;
+  const usuario = await CadastroModel.findOneAndDelete({_id: id});
+  return usuario;
+};
+
 module.exports = Cadastro;
+
