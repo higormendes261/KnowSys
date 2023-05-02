@@ -10,12 +10,13 @@ const novaInstrucaoController = require('./src/controllers/novaInstrucaoControll
 const instrucoesController = require('./src/controllers/instrucoesController');
 const homeController = require('./src/controllers/homeController');
 const instrucaoController = require('./src/controllers/instrucaoController');
+const indexController = require('./src/controllers/indexController');
 
 
 const { loginRequired } = require('./src/middlewares/middleware');
 
 // Rotas da home
-route.get('/', loginController.index);
+route.get('/', indexController.index);
 
 // Rotas de login
 route.get('/login/index', loginController.index);
@@ -48,5 +49,7 @@ route.get('/instrucao2/index/:id', loginRequired, instrucaoController.editIndex)
 //Rota para home
 route.get('/home/index', homeController.index);
 
+//Rota para o index
+route.get('/index', indexController.index);
 
 module.exports = route;
