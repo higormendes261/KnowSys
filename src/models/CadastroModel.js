@@ -102,20 +102,6 @@ exports.delete = async function(req, res) {
   return;
 };
 
-Cadastro.prototype.cleanUp = function() {
-  for(const key in this.body) {
-    if(typeof this.body[key] !== 'string') {
-      this.body[key] = '';
-    }
-  }
-  
-  this.body = {
-    nome: this.body.nome,
-    matricula: this.body.matricula,
-    email: this.body.email,
-    senha: this.body.senha,
-  };
-};
 
 Cadastro.prototype.edit = async function(id) {
   if(typeof id !== 'string') return;
