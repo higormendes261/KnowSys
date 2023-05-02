@@ -22,10 +22,10 @@
       <%- include('includes/messages') %>
 
       <% if(usuario.length > 0) { %>
-
           <% usuario.forEach(usuario => { %>
-            <td><%= usuario.nome %></td>
-            <td><%= usuario.matricula %></td>
+            <% if (usuario.tipoUsuario === "administrador") { return; } %>
+            <td><%= usuario.inputNome %></td>
+            <td><%= usuario.inputMatricula %></td>
             <td><%= usuario.email %></td>
             <td><a href="/editarUsuario/index/<%= usuario._id %>">Editar</a></td>
             <td><a class="text-danger" href="/editarUsuario/delete/<%= usuario._id %>">Excluir</a></td>

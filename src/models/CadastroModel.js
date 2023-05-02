@@ -49,6 +49,10 @@ class Cadastro {
     if(this.body.inputNomeEmpresa.length < 1){
       this.errors.push('O nome da empresa não pode ser vazio.');
     }
+
+    if(this.body.inputNome.length < 1){
+      this.errors.push('O nome não pode ser vazio.');
+    }
     
     
     if(this.body.inputCnpjEmpresa.length < 18){

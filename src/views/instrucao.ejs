@@ -8,17 +8,18 @@
     <div class="col-lg-8 my-3">
       <h1 class="text-center">KnowSys</h1>
       <p class="text-center lead">Instruções estão abaixo</p>
-      <button type="button" class="btn btn-primary"><a href="/novaInstrucao/index" style="text-decoration: none; color: white;">Criar nova instrução.</a></button>
+      <% if(user.tipoUsuario === "administrador") { %>
+        <button type="button" class="btn btn-primary"><a href="/novaInstrucao/index" style="text-decoration: none; color: white;">Criar nova instrução.</a></button>
+      <% }%>
       <div class="responsive-table">
         <table class="table my-3">
       <tr>
         <th scope="col">Categoria</th>
         <th scope="col">Titulo</th> 
 
-<!--   ADICIONAR O IF PARA USUARIO ADMIM       -->
-        <th scope="row" colspan="2">Opções</th>
-<!--   ADICIONAR O IF PARA USUARIO ADMIM       -->
-
+        <% if(user.tipoUsuario === "administrador") { %>
+          <th scope="row" colspan="2">Opções</th>
+        <% }%>
       </tr>
     <tr>
       <%- include('includes/messages') %>
@@ -26,8 +27,10 @@
           <% instrucao.forEach(instrucao => { %>
             <td><%= instrucao.categoriaInstrucao %></td>
             <td><%= instrucao.temaInstrucao %></td>
-            <td><a href="/novaInstrucao/index/<%= instrucao._id %>">Editar</a></td>
-            <td><a class="text-danger" href="/novaInstrucao/delete/<%= instrucao._id %>">Excluir</a></td>
+            <% if(user.tipoUsuario === "administrador") { %>
+              <td><a href="/novaInstrucao/index/<%= instrucao._id %>">Editar</a></td>
+              <td><a class="text-danger" href="/novaInstrucao/delete/<%= instrucao._id %>">Excluir</a></td>
+            <% }%>
           </tr>
           <% }); %>
         </table>
