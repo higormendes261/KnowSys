@@ -9,6 +9,8 @@ const duvidasController = require('./src/controllers/duvidasController');
 const novaInstrucaoController = require('./src/controllers/novaInstrucaoController');
 const instrucoesController = require('./src/controllers/instrucoesController');
 const homeController = require('./src/controllers/homeController');
+const instrucaoController = require('./src/controllers/instrucaoController');
+
 
 const { loginRequired } = require('./src/middlewares/middleware');
 
@@ -41,6 +43,7 @@ route.post('/novaInstrucao/register', loginRequired, novaInstrucaoController.reg
 route.get('/novaInstrucao/index/:id', loginRequired, novaInstrucaoController.editIndex);
 route.post('/novaInstrucao/edit/:id', loginRequired, novaInstrucaoController.edit);
 route.get('/novaInstrucao/delete/:id', loginRequired, novaInstrucaoController.delete);
+route.get('/instrucao2/index/:id', loginRequired, instrucaoController.editIndex);
 
 //Rota para home
 route.get('/home/index', homeController.index);

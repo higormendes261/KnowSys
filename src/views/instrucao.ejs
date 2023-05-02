@@ -25,7 +25,7 @@
       <%- include('includes/messages') %>
       <% if(instrucao.length > 0) { %>
           <% instrucao.forEach(instrucao => { %>
-            <td><%= instrucao.categoriaInstrucao %></td>
+            <td><a href="/instrucao2/index/<%= instrucao._id %>"><%= instrucao.categoriaInstrucao %></a></td>
             <td><%= instrucao.temaInstrucao %></td>
             <% if(user.tipoUsuario === "administrador") { %>
               <td><a href="/novaInstrucao/index/<%= instrucao._id %>">Editar</a></td>
