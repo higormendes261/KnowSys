@@ -30,23 +30,25 @@
                         <div class="row">
                             <div class="col-lg my-5">
 
-                                <form class="form-login" action="/" id="formulario-duvidas" method="POST">
+                                <form class="form-duvias" action="https://api.staticforms.xyz/submit" id="formulario-duvidas" method="POST">
                                     <div class="mb-3">
+                                        <input type="hidden" name="accessKey" value="aeaf87ce-bbd9-49b3-a43d-a554b68eae5c"> <!-- Required -->
                                         <label class="form-label" for="nome-duvidas">Nome:</label>
-                                        <input class="form-control" type="text" id="nome-duvidas" name="nome-duvidas">
+                                        <input class="form-control" type="text" id="nome-duvidas" name="name">
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label" for="email-duvidas">Email:</label>
-                                        <input class="form-control" type="email" id="email-duvidas" name="email-duvidas"
+                                        <input class="form-control" type="email" id="email-duvidas" name="email"
                                             placeholder="exemplo@exemplo.com">
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label" for="descricao-duvidas">Descrição:</label>
-                                        <textarea class="form-control" name="descricao-duvidas" id="descricao-duvidas"
+                                        <textarea class="form-control" name="message" id="descricao-duvidas"
                                             cols="30" rows="10" placeholder="Descreva sua dúvida aqui."></textarea>
                                     </div>
-
-                                    <button class="btn btn-primary" type="submit">Enviar</button>
+                                    <input type="hidden" name="redirectTo" value=""> 
+                                    <button  class="btn btn-primary" type="submit">Enviar</button>
+                                    
 
                                 </form>
 
