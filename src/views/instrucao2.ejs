@@ -2,6 +2,23 @@
 <%- include('includes/nav') %>
 <%- include('includes/botaoVoltar') %>
 
+<style>
+    .descricao-instrucao {
+  word-wrap: break-word;
+  word-break: break-all;
+  max-width: 100%;
+}
+
+    .tema{
+        margin-top: 50px;
+    }
+
+    .descricao-instrucao{
+        margin-top: 20px;
+    }
+
+</style>
+
 <head><link rel="stylesheet" href="/assets/css/style-novaInstrucao.css">
 
 </head>
@@ -20,8 +37,8 @@
 
         <input type="hidden" name="_csrf" value=<%= csrfToken %>>
 
-        <h2 class="card-subtitle mb-2 text-body-secondary" ><%= instrucao.temaInstrucao %></h2>
-        <p class="card-text"><%= instrucao.descricaoInstrucao %></p>
+        <h2 class="card-subtitle mb-2 text-body-secondary tema" ><%= instrucao.temaInstrucao %></h2>
+        <p class="card-text descricao-instrucao"><%= instrucao.descricaoInstrucao %></p>
        
         <% if(user.tipoUsuario === "administrador") { %>
             <td><a class="btn btn-primary"  href="/novaInstrucao/index/<%= instrucao._id %>">Editar</a></td>
