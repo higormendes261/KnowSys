@@ -42,6 +42,7 @@
                                                     <% } %>
                                                         <!-- <form class="formulario-novaInstrucao" action="/novaInstrucao/register" id="formulario-novaInstrucao" method="POST"> -->
                                                         <div class="mb-3">
+                                                            <input type="hidden" name="inputCnpjEmpresa" value=<%= user.inputCnpjEmpresa %>>
                                                             <input class="form-control" type="hidden" name="_csrf"
                                                                 value=<%=csrfToken %>>
                                                             <label class="form-label"
