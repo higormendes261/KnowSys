@@ -11,7 +11,7 @@ const instrucoesController = require('./src/controllers/instrucoesController');
 const homeController = require('./src/controllers/homeController');
 const instrucaoController = require('./src/controllers/instrucaoController');
 const indexController = require('./src/controllers/indexController');
-const filtroController = require('./src/controllers/filtroController');
+
 
 
 const { loginRequired } = require('./src/middlewares/middleware');
@@ -30,6 +30,7 @@ route.post('/cadastro/register', cadastroController.register);
 
 // Rotas de editar usuarios
 route.get('/usuarios/index', loginRequired, usuariosController.index);
+route.get('/usuarios/filter', loginRequired, usuariosController.buscarPorNome);
 route.get('/editarUsuario/index', loginRequired, editarUsuarioController.index);
 route.get('/editarUsuario/index/:id', loginRequired, editarUsuarioController.editIndex);
 route.post('/editarUsuario/edit/:id', loginRequired, editarUsuarioController.edit);
@@ -53,9 +54,6 @@ route.get('/home/index', homeController.index);
 //Rota para o index
 route.get('/index', indexController.index);
 
-//Rota para filtros
-route.get('/usuarios/index', filtroController.index);
-route.post('/filtro/register', filtroController.register);
 
 
 module.exports = route;

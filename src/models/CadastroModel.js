@@ -133,5 +133,20 @@ Cadastro.delete = async function(id) {
   return usuario;
 };
 
+Cadastro.buscarPeloNome = async function (nome) {
+  try {
+    const resultados = await CadastroModel.find({ inputNome: nome })
+      .sort({ criadoEm: -1 })
+      .exec();
+
+    return resultados;
+  } catch (err) {
+    // Trate o erro aqui
+    console.error(err);
+    throw err; // Lança o erro para ser tratado em outro lugar, se necessário
+  }
+};
+
+
 module.exports = Cadastro;
 
