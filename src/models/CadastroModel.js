@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const bcryptjs = require('bcryptjs');
 
+
+
 const CadastroSchema = new mongoose.Schema({
   email: { type: String, required: true },
   inputNome: { type: String, required: true},
@@ -133,6 +135,8 @@ Cadastro.delete = async function(id) {
   return usuario;
 };
 
+//Filtros
+
 Cadastro.buscarPeloNome = async function (nome) {
   try {
     const resultados = await CadastroModel.find({ inputNome: nome })
@@ -146,6 +150,38 @@ Cadastro.buscarPeloNome = async function (nome) {
     throw err; // Lança o erro para ser tratado em outro lugar, se necessário
   }
 };
+
+
+
+Cadastro.buscarPelaMatricula = async function (matricula) {
+  try {
+    const resultados = await CadastroModel.find({ inputMatricula: matricula })
+      .sort({ criadoEm: -1 })
+      .exec();
+
+    return resultados;
+  } catch (err) {
+    // Trate o erro aqui
+    console.error(err);
+    throw err; // Lança o erro para ser tratado em outro lugar, se necessário
+  }
+};
+
+Cadastro.buscarPeloEmail = async function (email) {
+  try {
+    const resultados = await CadastroModel.find({ email: email })
+      .sort({ criadoEm: -1 })
+      .exec();
+
+    return resultados;
+  } catch (err) {
+    // Trate o erro aqui
+    console.error(err);
+    throw err; // Lança o erro para ser tratado em outro lugar, se necessário
+  }
+};
+
+
 
 
 module.exports = Cadastro;
