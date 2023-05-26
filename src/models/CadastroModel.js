@@ -137,52 +137,28 @@ Cadastro.delete = async function(id) {
 
 //Filtros
 
-Cadastro.buscarPeloNome = async function (nome) {
-  try {
-    const resultados = await CadastroModel.find({ inputNome: nome })
-      .sort({ criadoEm: -1 })
-      .exec();
 
-    return resultados;
-  } catch (err) {
-    // Trate o erro aqui
-    console.error(err);
-    throw err; // Lança o erro para ser tratado em outro lugar, se necessário
-  }
+
+
+
+Cadastro.filtrarUsuarios = async function(nome, email, matricula) {
+
+  const usuarios = await CadastroModel.find()
+
+    var usuarioFiltrado = []
+    
+    usuarios.forEach(usuario => {
+      if ((usuario.inputNome.toUpperCase()).includes(nome.toUpperCase()) || usuario.inputMatricula == matricula || usuario.email == email) {
+        usuarioFiltrado.push(usuario)
+
+      }
+    }
+    )
+    console.log('teste')
+    console.log(usuarioFiltrado)
+    return usuarioFiltrado
+
 };
-
-
-
-Cadastro.buscarPelaMatricula = async function (matricula) {
-  try {
-    const resultados = await CadastroModel.find({ inputMatricula: matricula })
-      .sort({ criadoEm: -1 })
-      .exec();
-
-    return resultados;
-  } catch (err) {
-    // Trate o erro aqui
-    console.error(err);
-    throw err; // Lança o erro para ser tratado em outro lugar, se necessário
-  }
-};
-
-Cadastro.buscarPeloEmail = async function (email) {
-  try {
-    const resultados = await CadastroModel.find({ email: email })
-      .sort({ criadoEm: -1 })
-      .exec();
-
-    return resultados;
-  } catch (err) {
-    // Trate o erro aqui
-    console.error(err);
-    throw err; // Lança o erro para ser tratado em outro lugar, se necessário
-  }
-};
-
-
-
 
 module.exports = Cadastro;
 
