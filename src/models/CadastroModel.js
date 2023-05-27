@@ -154,8 +154,7 @@ Cadastro.filtrarUsuarios = async function(nome, email, matricula) {
       }
     }
     )
-    console.log('teste')
-    console.log(usuarioFiltrado)
+
     return usuarioFiltrado
 
 };
