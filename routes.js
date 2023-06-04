@@ -41,6 +41,7 @@ route.get('/duvidas/index', duvidasController.index);
 
 //Rota de instrução
 route.get('/instrucao/index', loginRequired, instrucoesController.index);
+route.get('/sumarioInstrucao/index', loginRequired, sumarioInstrucao.index);
 route.get('/novaInstrucao/index', loginRequired, novaInstrucaoController.index);
 route.post('/novaInstrucao/register', loginRequired, novaInstrucaoController.register);
 route.get('/novaInstrucao/index/:id', loginRequired, novaInstrucaoController.editIndex);
