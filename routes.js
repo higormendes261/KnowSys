@@ -11,6 +11,7 @@ const instrucoesController = require('./src/controllers/instrucoesController');
 const homeController = require('./src/controllers/homeController');
 const instrucaoController = require('./src/controllers/instrucaoController');
 const indexController = require('./src/controllers/indexController');
+const sumarioInstrucaoController = require('./src/controllers/sumarioInstrucaoController');
 
 
 
@@ -41,13 +42,13 @@ route.get('/duvidas/index', duvidasController.index);
 
 //Rota de instrução
 route.get('/instrucao/index', loginRequired, instrucoesController.index);
-route.get('/sumarioInstrucao/index', loginRequired, sumarioInstrucao.index);
 route.get('/novaInstrucao/index', loginRequired, novaInstrucaoController.index);
 route.post('/novaInstrucao/register', loginRequired, novaInstrucaoController.register);
 route.get('/novaInstrucao/index/:id', loginRequired, novaInstrucaoController.editIndex);
 route.post('/novaInstrucao/edit/:id', loginRequired, novaInstrucaoController.edit);
 route.get('/novaInstrucao/delete/:id', loginRequired, novaInstrucaoController.delete);
 route.get('/instrucao2/index/:id', loginRequired, instrucaoController.editIndex);
+route.get('/sumarioInstrucao/index', loginRequired, sumarioInstrucaoController.index);
 
 //Rota para home
 route.get('/home/index', homeController.index);
