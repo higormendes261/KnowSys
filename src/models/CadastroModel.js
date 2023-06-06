@@ -141,14 +141,14 @@ Cadastro.delete = async function(id) {
 
 
 
-Cadastro.filtrarUsuarios = async function(nome, email, matricula) {
+Cadastro.filtrarUsuarios = async function(pesquisa) {
 
   const usuarios = await CadastroModel.find()
 
     var usuarioFiltrado = []
     
     usuarios.forEach(usuario => {
-      if ((usuario.inputNome.toUpperCase()).includes(nome.toUpperCase()) || usuario.inputMatricula == matricula || usuario.email == email) {
+      if ((usuario.inputNome.toUpperCase()).includes(pesquisa.toUpperCase()) ||  (usuario.inputMatricula.toUpperCase()).includes(pesquisa.toUpperCase())|| (usuario.email.toUpperCase()).includes(pesquisa.toUpperCase())) {
         usuarioFiltrado.push(usuario)
 
       }
