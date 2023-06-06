@@ -1,19 +1,108 @@
 <%- include('includes/head') %>
 <%- include('includes/nav') %>
 
+	<style>
+	
+	.jumbotron {
+		background-color: #fff;
+		font-size: 20px;
+		text-align: center;
+		margin: auto;
+	}
 
+	#logo-knowsys {
+		margin-bottom: 20px;
+	}
+
+	.container h1 {
+		font-weight: 500;
+	}
+
+	#valores h2 {
+		color: #3cdddd;
+
+	}
+
+	#valores {
+		margin-bottom: 50px;
+		padding-top: 10px;
+		padding-left: 10px;
+		padding-right: 10px;
+		padding-bottom: 10px;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.sobre {
+		padding-top: 40px;
+		padding-bottom: 40px;
+	}
+	
+	#paragrafo-descritivo {
+		font-weight: 300;
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+	}
+	
+	.uso {
+		padding-top: 5rem;
+		padding-bottom: 5rem;
+		background-color: #428383;
+		color: white;
+		width: 100%;
+	}
+
+	#beneficios {
+		padding-top: 5rem;
+		padding-bottom: 5rem;
+	}
+
+	#col-beneficios {
+		text-align: center;
+	}
+
+	#titulo-beneficios {
+		text-align: center;
+		padding-top: 4px;
+		font-size: 12;
+		font-weight: 300;
+	}
+
+	#imagem-beneficios {
+		width: 90%;
+	}
+
+	#imagem-sobre {
+		height: 20rem;
+		background-image: url(assets/img/home1.jpg);
+		background-size: 100%;
+	}
+
+	#icon-beneficios {
+		display: flex;
+    	justify-content: space-between;
+	}
+
+	</style>
+  
 	<!-- Jumbotron -->
-	<div class="jumbotron jumbotron-fluid">
+	<div class="jumbotron jumbotron-fluid" style="height: 90vh; display: flex; align-items: center;">
 		<div class="container">
+			<img src="assets/img/icone-KnowSys.png" alt="logo" id="logo-knowsys">
 			<h1 class="display-4">Bem-vindo ao KnowSys!</h1>
-			<p class="lead">Um site dedicado a fornecer conhecimento.</p>
-			<a href="/login/index" class="btn btn-primary btn-lg">Iniciar</a>
+			<p class="lead">O sistema de gestão do conhecimento que pode melhorar a experiência do(a) colaborador(a) e fazer seu negócio crescer.</p>
+
+			<a href="#sobre"><img src="assets/img/scrolling_mousewheel.gif" alt="mouse-scrolling" style="width: 6.5rem; padding-top: 5rem;"></a>
 		</div>
+
+		<!--<div>
+			<a href="/login/index" class="btn btn-primary btn-lg">Iniciar</a>
+		</div>-->
 	</div>
 
 	<!-- Main Content -->
 	<div class="container">
-		<div class="row">
+		<!--<div class="row" id="valores">
 			<div class="col-md-6">
 				<h2>Nossa missão</h2>
 				<p>Na KnowSys, nossa missão é fornecer aos nossos usuários uma ferramenta de alta qualidade, precisa e atualizada.</p>
@@ -22,6 +111,67 @@
 				<h2>Nossa visão</h2>
 				<p>Nossa visão é nos tornarmos a principal fonte de conhecimento e informação para pessoas em todo o mundo.</p>
 			</div>
+		</div>-->
+
+
+			<section class="sobre" id="sobre">
+				<div class="row">
+					<div class="col-md-5"><div id="imagem-sobre" class="rounded mx-auto d-block">
+					</div></div>
+
+					<div class="col-md-7" style="align-self: center; display: flex; justify-content: center;">
+						<div style="width: 80%;">
+							<h2>O que é um sistema de Gestão de Conhecimento?</h2>
+							<p id="paragrafo-descritivo">Um sistema de gestão do conhecimento (SGC) é uma ferramenta para compartilhar o saber e as experiências entre os colaboradores, de forma ágil e horizontal. No sistema é possível documentar instruções, organizar os temas mais acessados dentro da empresa, além de permitir que colaboradores encaminhe dúvidas e sugestões pela plataforma.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+
+			<section class="uso">
+				<div class="container">
+					<h2>Como extrair o melhor do KnowSys?</h2>
+					<p id="paragrafo-descritivo">O sistema de gestão de conhecimento auxilia a empresa permanecer atualizada e bem organizada, sendo um instrumento valioso para introduzir os novos funcionários e complementar o conhecimento dos demais.</p>
+				</div>
+			</section>
+			
+			
+			<section class="container" id="beneficios">
+				<h2>Quais os benefícios do Sistema de Gestão de Conhecimento para sua empresa?</h2>
+				<p id="paragrafo-descritivo">A utilização do KnowSys facilita a integração de novos funcionários, possibilita a inserção de novas informações e atualização de dados, como também, oportuniza os colaboradores participarem ativamente das atividades da empresa.</p>
+				
+				<div class="row" id="icon-beneficios">
+					<div class="col-lg-2" id="col-beneficios">
+						<img src="assets/img/cent-infos.png" id="imagem-beneficios" alt="infos">
+						<p id="titulo-beneficios">Centralização de infomações</p>
+					</div>
+	
+					<div class="col-lg-2" id="col-beneficios">
+						<img src="assets/img/conhec-compartilhado.png" id="imagem-beneficios" alt="conhecimento" srcset="">
+						<p id="titulo-beneficios">Conhecimento compartilhado</p>
+					</div>
+	
+					<div class="col-lg-2" id="col-beneficios">
+						<img src="assets/img/inst-atualizadas.png" id="imagem-beneficios" alt="instruções" srcset="">
+						<p id="titulo-beneficios">Instruções atualizadas</p>
+					</div>
+	
+					<div class="col-lg-2" id="col-beneficios">
+						<img src="assets/img/otim-tempo.png" id="imagem-beneficios" alt="otimizacao" srcset="">
+						<p id="titulo-beneficios">Otimização de tempo</p>
+					</div>
+	
+					<div class="col-lg-2" id="col-beneficios">
+						<img src="assets/img/padro-processos.png" id="imagem-beneficios" alt="padro-processo" srcset="">
+						<p id="titulo-beneficios">Padronização de processos</p>
+					</div>
+				</div>
+
+				<p id="paragrafo-descritivo">A utilização do KnowSys facilita a integração de novos funcionários, possibilita a inserção de novas informações e atualização de dados, como também, oportuniza os colaboradores participarem ativamente das atividades da empresa.</p>
+			</section>
+
+
 		</div>
 	</div>
 
