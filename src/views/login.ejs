@@ -4,55 +4,117 @@
 
 <style>
   .container-cadastro{
-    display: flex; 
-    align-items: center;
-}
-
-  .container-cadastro p{
-    margin-left: 25px;
+    display: block;
   }
 
-body{
-  font-size: 22px;
-}
+  .container-cadastro p{
+    text-align: left;
+    font-size: 16px;
+  }
 
-.button-login{
-    font-size: 22px;
-    width: 100px;
-}
+  #bem-vindo{
+    margin: auto;
+    padding-top: 20px;
+    width: 20rem;
+  }
 
+  h5{
+    text-align: center;
+    padding-bottom: 4%;
+  }
+
+  .form-group input {
+    border-radius: 8px;
+    border-color: #c4c4c4;
+    height: 32px;
+    width: 20rem;
+  }
+
+  .form-group label{
+    font-size: 15px;
+    font-weight: 400;
+    padding-bottom: -2px;
+  }
+
+  .form-login{
+    display: flex;
+    align-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+.container-cadastro {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    align-content: stretch;
+    flex-direction: column;
+  }
+
+  .button-login{
+    background-color: #428383;
+    border-color: #428383;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 20px;
+    height: auto;
+    width: auto;
+  }
+
+  #imagem-login {
+    background-image: url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=871&q=80");
+    height: 100vh;
+  }
+
+  #jatemconta {
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: center;
+    padding-bottom: 2%;
+  }
 </style>
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-2"></div>
-    <div class="col-lg-8 my-3">
-      <h1 class="text-center">Entrar</h1>
-      <p class="text-center lead">Faça login ou crie sua conta abaixo</p>
+    <div class="col-lg" id="imagem-login">
+    </div>
+
+    <div class="col-lg">
+      <div id="bem-vindo" >
+        <h1 class="text-center">Bem-vindo(a)!</h1>
+        <p class="text-center lead" style="font-size: 1rem; margin: 0 !important;">Desbrave o melhor do conhecimento que sua empresa pode lhe proporcionar.</p>
+      </div>
       <%- include('includes/messages'); %>
-      <div class="row">
+      <div class="row" id="sessao-entrar">
         <div class="col-lg my-5">
-          <h4>Faça seu login</h4>
-          <p>Se você já tem uma conta, faça login abaixo:</p>
+          <p id="jatemconta">Você já tem uma conta, inicie a sua sessão:</p>
           <form class="form-login" action="/login/login" method="POST">
             <input type="hidden" name="_csrf" value=<%= csrfToken %>>
             <div class="form-group">
-              <label form="email">Seu e-mail</label>
+              <label form="email">Usuário</label>
               <input type="email" class="form-control" name="email">
             </div>
             <div class="form-group">
-              <label for="password">Sua senha</label>
+              <label for="password">Senha</label>
               <input type="password" class="form-control" name="password">
             </div>
+            
             <div class="container-cadastro">
-              <button type="submit" class="btn btn-primary button-login">Entrar</button> <p>Primeira vez no KnowSys? <a href="/cadastro/index">Cadastra-se aqui!</a></p>
+              <p>Primeira vez no KnowSys? <a href="/cadastro/index">Cadastre-se aqui!</a></p>
+    
+              <button type="submit" class="btn btn-primary button-login">Entrar</button>
             </div>
           </form>          
         </div>
       </div>
     </div>
-    <div class="col-lg-2"></div>
+
+    </div>
+
   </div>
+
 </div>
 
 <%- include('includes/footer') %>
