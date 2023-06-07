@@ -14,19 +14,18 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <% function mostraInstrucao () { %>
-                            <% if (instrucao.inputCnpjEmpresa == user.inputCnpjEmpresa) { %>
-                                <h2><%= instrucao.categoriaInstrucao %></h2>
-                                <h3><%= instrucao.temaInstrucao %></h3>
+                        <% instrucao.forEach((instrucao) => { %>
+                            <% if (instrucao.inputCnpjEmpresa==user.inputCnpjEmpresa) { %>
+                                <h2> <%= instrucao.categoriaInstrucao %> </h2>
+                                <h3> <%= instrucao.temaInstrucao %> </h3>
                             <% } else { %>
                                 <p>Não há instrução cadastrada</p>
-                            <% } %>
+                                <% } %>
                             <% console.log(`A instrucao.inputCnpjEmpresa é: ${instrucao.inputCnpjEmpresa} e o user.inputCnpjEmpresa é: ${user.inputCnpjEmpresa}`); %>
                             <% console.log() %>
                             <% console.log() %>
-                        <% } %>
+                        <% }); %>
 
-                        <% instrucao.forEach(mostraInstrucao) %>
 
                     </div>
                 </div>
