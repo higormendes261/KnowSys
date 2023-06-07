@@ -6,6 +6,8 @@ exports.index = (req, res) => {
   });
 };
 
+
+
 exports.register = async function(req, res) {
   try {
     const cadastro = new Cadastro(req.body);
@@ -51,7 +53,7 @@ exports.edit = async function(req, res) {
     }
 
     req.flash('success', 'Usuario editado com sucesso.');
-    req.session.save(() => res.redirect(`/editarUsuario/index/${usuario.usuario._id}`));
+    req.session.save(() => res.redirect(`/usuarios/index`));
     return;
   } catch(e) {
     console.log(e);
@@ -68,4 +70,12 @@ exports.delete = async function(req, res) {
   req.flash('success', 'Usuario apagado com sucesso.');
   req.session.save(() => res.redirect('back'));
   return;
+};
+
+// moderador
+
+exports.index2 = (req, res) => {
+  res.render('perfilModerador', {
+    usuario: {}
+  });
 };
