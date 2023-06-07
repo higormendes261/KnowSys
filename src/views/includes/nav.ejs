@@ -22,9 +22,27 @@
       <% if(user) { %>
         <% if(user.tipoUsuario==="administrador") { %>
         <li class="nav-item"><a class="nav-link" href="/home/index">Home</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Perfil
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Meu perfil</a>
+            <a class="dropdown-item" href="#">Empresa</a>
+            <a class="dropdown-item" href="/usuarios/index">Usuários</a>
+          </div>
+        </li>
         <li class="nav-item"><a class="nav-link" href="/instrucao/index">Instruções</a></li>
         <li class="nav-item"><a class="nav-link" href="/duvidas/index">Dúvidas</a></li>
-        <li class="nav-item"><a class="nav-link" href="/usuarios/index">Usuários</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Usuários
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/editarUsuario/index">Adicionar</a>
+            <a class="dropdown-item" href="/usuarios/index">Pesquisar</a>
+          </div>
+        </li>
         <li class="nav-item"><a class="nav-link" href="/login/logout">Sair</a></li>
         <% } else { %>
           <li class="nav-item"><a class="nav-link" href="/home/index">Home</a></li>
