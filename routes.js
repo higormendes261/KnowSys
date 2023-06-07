@@ -35,6 +35,7 @@ route.get('/editarUsuario/index', loginRequired, editarUsuarioController.index);
 route.get('/editarUsuario/index/:id', loginRequired, editarUsuarioController.editIndex);
 route.post('/editarUsuario/edit/:id', loginRequired, editarUsuarioController.edit);
 route.get('/editarUsuario/delete/:id', loginRequired, editarUsuarioController.delete);
+route.get('/perfilModerador/index', loginRequired, editarUsuarioController.index2);
 
 // Rotas de dúvidas
 route.get('/duvidas/index', duvidasController.index);

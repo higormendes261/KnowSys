@@ -6,6 +6,12 @@ exports.index = (req, res) => {
   });
 };
 
+exports.index2 = (req, res) => {
+  res.render('perfilModerador', {
+    usuario: {}
+  });
+};
+
 exports.register = async function(req, res) {
   try {
     const cadastro = new Cadastro(req.body);
