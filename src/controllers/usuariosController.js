@@ -7,11 +7,9 @@ exports.index = async(req, res) => {
 
 //Filtros
 exports.buscarPorNome = async(req, res) => {
-  const nome = req.query.pesquisarNome;
-  const email = req.query.pesquisarEmail;
-  const matricula = req.query.pesquisarMatricula;
+  const nome = req.query.pesquisarNome.toUpperCase();
 
-  const usuario = await Usuario.filtrarUsuarios( nome, email, matricula);
+  const usuario = await Usuario.filtrarUsuarios( nome);
   res.render('usuarios', { usuario });
   
 };
