@@ -75,7 +75,7 @@ exports.delete = async function(req, res) {
 // empresa
 
 exports.index1 = (req, res) => {
-  res.render('perfilModerador', {
+  res.render('empresa', {
     usuario: {}
   });
 };

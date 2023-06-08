@@ -34,9 +34,10 @@
             <%- include('includes/messages') %>
 
               <% if(user._id) { %>
-                <form class="row g-3 m-2d-flex justify-content-end" action="/editarUsuario/edit/<%= user._id %>" method="POST">
+                <form class="row g-3 m-2d-flex justify-content-end" id="formulario-editarEmpresa" action="/editarUsuario/edit/<%= user._id %>"
+                  method="POST">
                   <% } else { %>
-                    <form action="/cadastro/register" method="POST">
+                    <form action="/cadastro/register" id="formulario-editarEmpresa" method="POST">
                       <% } %>
                         <input type="hidden" name="_csrf" value=<%=csrfToken %>>
                         <input type="hidden" name="tipoUsuario" value="usuario">
@@ -68,8 +69,10 @@
                           </div>
                         </div>
                         <div>
-                          <button type="submit" class="btn btn-success g-3 m-2"><svg xmlns="http://www.w3.org/2000/svg"
-                              width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                          <button type="button" class="btn btn-success g-3 m-2 confirmar-cadastro" data-toggle="modal"
+                            data-target="#exampleModalCenter" id="photoBtn" type="button"><svg
+                              xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                              class="bi bi-check-lg" viewBox="0 0 16 16">
                               <path
                                 d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z" />
                             </svg> Salvar</button>
@@ -86,5 +89,38 @@
           <div class="col-lg-2"></div>
         </div>
       </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Confirmação</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Deseja salvar as alterações?</p>
+            </div>
+            <div class="modal-footer">
+              <button id="btnSalvarModal1" type="button" class="btn btn-primary">Salvar</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <script type="text/javascript">
+        document.getElementById('btnSalvarModal1').addEventListener('click', function (event) {
+          event.preventDefault(); // Impede o envio do formulário
+
+          // Enviar os dados do formulário para o servidor
+          document.getElementById('formulario-editarEmpresa').submit();
+        });
+      </script>
+
 
       <%- include('includes/footer') %>
