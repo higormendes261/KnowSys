@@ -1,5 +1,9 @@
+<%- include('includes/head') %>
+<%- include('includes/nav') %>
+<%- include('includes/botaoVoltar') %>
+
 <style>
-.letra-sozinha {
+  #letra-sozinha {
     font-size: 40px;
     display: inline-block;
     width: 50px;
@@ -12,52 +16,73 @@
   }
 </style>
 
-<%- include('includes/head') %>
-<%- include('includes/nav') %>
-<%- include('includes/botaoVoltar') %>
 
-<% let todasCategorias = []; %>
-<% let todosTemas = []; %>
-<% let categoriasUnicas = []; %>
-<% let listaFinal = []; %>
-<% let i = 0; %>
 
-<% instrucao.forEach((instrucao)=> { %>
-    <% if (instrucao.inputCnpjEmpresa == user.inputCnpjEmpresa) { %>
-        <% todasCategorias.push(instrucao.categoriaInstrucao); %>
-        <% todosTemas.push(instrucao.temaInstrucao); %>
-    <% } %>
-<% }); %>
+      <% let todasCategorias=[]; %>
+        <% let todosTemas=[]; %>
+          <% let categoriasUnicas=[]; %>
+            <% let listaFinal=[]; %>
+              <% let i=0; %>
 
-<% for (let i = 0; i < todasCategorias.length; i++) { %>
-    <% let categoria = todasCategorias[i]; %>
-    <% let tema = todosTemas[i]; %> 
-    <% let itemExistente = listaFinal.find(item => item.categoria === categoria); %>
-    <% if (itemExistente) { %>
-      <% itemExistente.temas.push(tema); %>
-    <% } else { %>
-      <% listaFinal.push({ categoria: categoria, temas: [tema] }); %>
-    <% } %>
-  <% } %>
+                <% instrucao.forEach((instrucao)=> { %>
+                  <% if (instrucao.inputCnpjEmpresa==user.inputCnpjEmpresa) { %>
+                    <% todasCategorias.push(instrucao.categoriaInstrucao); %>
+                      <% todosTemas.push(instrucao.temaInstrucao); %>
+                        <% } %>
+                          <% }); %>
 
-<div class="container">
-    <div class="row">
-        <div class="text-left">
-            <h1>Sumário de Instruções</h1>
-        </div>
-    </div>
-    <div class="container">
-        <div>
-            <% for (let i = 0; i < listaFinal.length; i++) { %>
-              <% let item = listaFinal[i]; %>
-              <div class="letra-sozinha"><%= item.categoria[0] %></div>
-              <h2><%= item.categoria%></h2>
-              <% for (let j = 0; j < item.temas.length; j++) { %>
-                <h3> <%= item.temas[j] %></h3>
-              <% } %>
-            <% } %>
-          </div>
-    </div>
-</div>
+                            <% for (let i=0; i < todasCategorias.length; i++) { %>
+                              <% let categoria=todasCategorias[i]; %>
+                                <% let tema=todosTemas[i]; %>
+                                  <% let itemExistente=listaFinal.find(item=> item.categoria === categoria); %>
+                                    <% if (itemExistente) { %>
+                                      <% itemExistente.temas.push(tema); %>
+                                        <% } else { %>
+                                          <% listaFinal.push({ categoria: categoria, temas: [tema] }); %>
+                                            <% } %>
+                                              <% } %>
 
-<%- include('includes/footer') %>
+                                                <div class="container">
+                                                  <div class="m-5" id="titulo">
+                                                    <h1>Sumário de Instruções</h1>
+                                                  </div>
+                                                  <div class="container">
+                                                    <div>
+                                                      <% for (let i=0; i < listaFinal.length; i++) { %>
+                                                        <% let item=listaFinal[i]; %>
+
+                                                          <div class="d-flex align-items-center pb-2">
+                                                          <div id="letra-sozinha">
+                                                            <%= item.categoria[0] %>
+                                                          </div>
+                                                          <h2 class="mx-3 mb-1">
+                                                            <%= item.categoria%>
+                                                          </h2>
+                                                        </div>
+                                                          <% for (let j=0; j < item.temas.length; j++) { %>
+                                                            <ul class="mx-5">
+                                                              <li><a style="color: black;"
+                                                                  href="/instrucao2/index/<%= instrucao._id %>"><%= item.temas[j] %>
+                                                              </li>
+                                                            </ul>
+                                                            <% } %>
+                                                              <% } %>
+                                                            </div>
+                                                    <div class="d-grid gap-2 d-sm-flex justify-content-sm-end">
+                                                      <button type="button"
+                                                        class="btn btn-info rounded-circle p-3 lh-1"><a
+                                                          href="/novaInstrucao/index"
+                                                          style="text-decoration: none; color: white;">
+                                                          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                                                            fill="currentColor" class="bi bi-plus-circle"
+                                                            viewBox="0 0 16 16">
+                                                            <path
+                                                              d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                            <path
+                                                              d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                                          </svg></a></button>
+                                                    </div>
+                                                  </div>
+                                                </div>
+
+                                                <%- include('includes/footer') %>

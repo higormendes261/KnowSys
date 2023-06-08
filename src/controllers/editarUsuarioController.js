@@ -72,6 +72,14 @@ exports.delete = async function(req, res) {
   return;
 };
 
+// empresa
+
+exports.index1 = (req, res) => {
+  res.render('perfilModerador', {
+    usuario: {}
+  });
+};
+
 // moderador
 
 exports.index2 = (req, res) => {
