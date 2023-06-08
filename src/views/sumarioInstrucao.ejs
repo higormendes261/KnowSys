@@ -1,34 +1,63 @@
+<style>
+.letra-sozinha {
+    font-size: 40px;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    line-height: 45px;
+    text-align: center;
+    border-radius: 8px;
+    background-color: #3CDDDD;
+    color: white;
+  }
+</style>
+
 <%- include('includes/head') %>
-    <%- include('includes/nav') %>
-        <%- include('includes/botaoVoltar') %>
+<%- include('includes/nav') %>
+<%- include('includes/botaoVoltar') %>
 
-            <div class="container">
-                <div class="row">
-                    <div class="text-left">
-                        <h1>Sumário de Instruções</h1>
-                    </div>
-                </div>
-            </div>
+<% let todasCategorias = []; %>
+<% let todosTemas = []; %>
+<% let categoriasUnicas = []; %>
+<% let listaFinal = []; %>
+<% let i = 0; %>
 
-            <div class="container">
-                <div class="card">
-                    <div class="card-body">
+<% instrucao.forEach((instrucao)=> { %>
+    <% if (instrucao.inputCnpjEmpresa == user.inputCnpjEmpresa) { %>
+        <% todasCategorias.push(instrucao.categoriaInstrucao); %>
+        <% todosTemas.push(instrucao.temaInstrucao); %>
+    <% } %>
+<% }); %>
 
-                        <% instrucao.forEach((instrucao) => { %>
-                            <% if (instrucao.inputCnpjEmpresa==user.inputCnpjEmpresa) { %>
-                                <h2> <%= instrucao.categoriaInstrucao %> </h2>
-                                <h3> <%= instrucao.temaInstrucao %> </h3>
-                            <% } else { %>
-                                <p>Não há instrução cadastrada</p>
-                                <% } %>
-                            <% console.log(`A instrucao.inputCnpjEmpresa é: ${instrucao.inputCnpjEmpresa} e o user.inputCnpjEmpresa é: ${user.inputCnpjEmpresa}`); %>
-                            <% console.log() %>
-                            <% console.log() %>
-                        <% }); %>
+<% for (let i = 0; i < todasCategorias.length; i++) { %>
+    <% let categoria = todasCategorias[i]; %>
+    <% let tema = todosTemas[i]; %> 
+    <% let itemExistente = listaFinal.find(item => item.categoria === categoria); %>
+    <% if (itemExistente) { %>
+      <% itemExistente.temas.push(tema); %>
+    <% } else { %>
+      <% listaFinal.push({ categoria: categoria, temas: [tema] }); %>
+    <% } %>
+  <% } %>
 
+<div class="container">
+    <div class="row">
+        <div class="text-left">
+            <h1>Sumário de Instruções</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div>
+            <% for (let i = 0; i < listaFinal.length; i++) { %>
+              <% let item = listaFinal[i]; %>
+              <div class="letra-sozinha"><%= item.categoria[0] %></div>
+              <h2><%= item.categoria%></h2>
+              <% for (let j = 0; j < item.temas.length; j++) { %>
+                <h3> <%= item.temas[j] %></h3>
+              <% } %>
+            <% } %>
+          </div>
+    </div>
+</div>
 
-                    </div>
-                </div>
-            </div>
-
-            <%- include('includes/footer') %>
+<%- include('includes/footer') %>
