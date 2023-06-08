@@ -11,6 +11,7 @@ const instrucoesController = require('./src/controllers/instrucoesController');
 const homeController = require('./src/controllers/homeController');
 const instrucaoController = require('./src/controllers/instrucaoController');
 const indexController = require('./src/controllers/indexController');
+const sumarioInstrucaoController = require('./src/controllers/sumarioInstrucaoController');
 
 
 
@@ -48,6 +49,7 @@ route.get('/novaInstrucao/index/:id', loginRequired, novaInstrucaoController.edi
 route.post('/novaInstrucao/edit/:id', loginRequired, novaInstrucaoController.edit);
 route.get('/novaInstrucao/delete/:id', loginRequired, novaInstrucaoController.delete);
 route.get('/instrucao2/index/:id', loginRequired, instrucaoController.editIndex);
+route.get('/sumarioInstrucao/index', loginRequired, sumarioInstrucaoController.index);
 
 //Rota para home
 route.get('/home/index', homeController.index);
