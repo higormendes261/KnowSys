@@ -39,7 +39,7 @@
                     <form action="/cadastro/register" method="POST">
                       <% } %>
                         <input type="hidden" name="_csrf" value=<%=csrfToken %>>
-                        <input type="hidden" name="tipoUsuario" value="usuario">
+                        <input type="hidden" name="tipoUsuario" value="administrador">
                         <input type="hidden" name="inputNomeEmpresa" value=<%=user.inputNomeEmpresa %>>
                         <input type="hidden" name="inputCnpjEmpresa" value=<%=user.inputCnpjEmpresa %>>
                         <input type="hidden" name="inputEmailEmpresa" value=<%=user.inputEmailEmpresa %>>

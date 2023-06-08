@@ -111,9 +111,10 @@ exports.delete = async function(req, res) {
 
 Cadastro.prototype.edit = async function(id) {
   if(typeof id !== 'string') return;
+
   this.valida();
   if(this.errors.length > 0) return;
-  this.user = await CadastroModel.findByIdAndUpdate(id, this.body, { new: true });
+  
 };
 
 // Métodos estáticos
