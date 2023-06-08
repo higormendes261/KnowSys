@@ -18,7 +18,7 @@ exports.register = async function(req, res) {
   
       req.flash('success', 'Seu usuário foi criado com sucesso.');
       req.session.save(function() {
-        return res.redirect('back');
+        return res.redirect('/usuarios/index');
       });
     } catch(e) {
       console.log(e);

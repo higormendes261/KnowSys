@@ -23,8 +23,7 @@
               Bem-vindo(a), <%= user.inputNome %>
             </h1>
             <div class="container rounded" style="background: #F0F0F0; padding: 10px 15px;">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni inventore reprehenderit iusto fugiat,
-              distinctio pariatur beatae fuga. Perferendis, in blanditiis!
+              O aperfeiçoamento profissional é o maior legado que você pode deixar para seus colaboradores.
             </div>
           </div>
         </div>
@@ -42,7 +41,7 @@
               <div class="card-deck mb-3 text-center">
                 <% instrucao.slice(0, 6).forEach((instrucao)=> { %>
                   <!-- Mostra apenas as 4 primeiras instruções com contador maior -->
-                  <% if (instrucao.inputCnpjEmpresa==user.inputCnpjEmpresa) { %>
+                  <% if ( instrucao.inputCnpjEmpresa == user.inputCnpjEmpresa) { %>
                     <div class="card mb-4 box-shadow">
                       <div class="card-deck">
                         <div class="card-body">
