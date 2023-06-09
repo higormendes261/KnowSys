@@ -1,101 +1,144 @@
 <%- include('includes/head') %>
     <%- include('includes/nav') %>
-    <%- include('includes/botaoVoltar') %>
+        <%- include('includes/botaoVoltar') %>
 
-        <!-- <head><link rel="stylesheet" href="/assets/css/style-novaInstrucao.css"></head> -->
-        <style>
-            .container-instrucao #titulo {
-                display: flex;
-                align-items: center;
+            <!-- <head><link rel="stylesheet" href="/assets/css/style-novaInstrucao.css"></head> -->
+            <style>
+                .container-instrucao #titulo {
+                    display: flex;
+                    align-items: center;
 
-            }
+                }
 
-            .container-instrucao img {
-                background-color: #3CDDDD;
-                border-radius: 15px;
-                padding: 10px;
-                margin: 0 15px 15px 0;
-            }
-        </style>
+                .container-instrucao img {
+                    background-color: #3CDDDD;
+                    border-radius: 15px;
+                    padding: 10px;
+                    margin: 0 15px 15px 0;
+                }
+            </style>
 
-        <section class="container-instrucao">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-2"></div>
-                    <div class="col-lg-8 my-3">
+            <section class="container-instrucao">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-2"></div>
+                        <div class="col-lg-8 my-3">
 
-                        <div class="row">
-                            <div class="col-lg my-5">
+                            <div class="row">
+                                <div class="col-lg my-5">
 
-                                <div id="titulo">
-                                    <img class="img-thumbnail" src="/assets/img/add (2) 1.png" alt="">
-                                    <h1>Nova Instrução</h1>
+                                    <div id="titulo">
+                                        <img class="img-thumbnail" src="/assets/img/add (2) 1.png" alt="">
+                                        <h1>Nova Instrução</h1>
+                                    </div>
+                                    <%- include('includes/messages'); %>
+
+                                        <% if(instrucao._id) { %>
+                                            <form class="formulario-novaInstrucao" id="formulario-novaInstrucao"
+                                                action="/novaInstrucao/edit/<%= instrucao._id %>" method="POST">
+                                                <% } else { %>
+                                                    <form class="formulario-novaInstrucao" id="formulario-novaInstrucao"
+                                                        action="/novaInstrucao/register" method="POST">
+                                                        <% } %>
+                                                            <!-- <form class="formulario-novaInstrucao" action="/novaInstrucao/register" id="formulario-novaInstrucao" method="POST"> -->
+                                                            <div class="mb-3">
+                                                                <input type="hidden" name="inputCnpjEmpresa"
+                                                                    value=<%=user.inputCnpjEmpresa %>>
+                                                                <input class="form-control" type="hidden" name="_csrf"
+                                                                    value=<%=csrfToken %>>
+                                                                <label class="form-label"
+                                                                    for="categoria-instrucao">Categoria:</label>
+                                                                <input class="form-control"
+                                                                    value="<%= instrucao.categoriaInstrucao %>"
+                                                                    type="text" id="categoria-instrucao"
+                                                                    name="categoriaInstrucao">
+
+
+                                                            </div>
+
+                                                            <div class="mb-3">
+                                                                <label class="form-label"
+                                                                    for="tema-instrucao">Título:</label>
+                                                                <input class="form-control"
+                                                                    value="<%= instrucao.temaInstrucao %>" type="text"
+                                                                    id="tema-instrucao" name="temaInstrucao">
+
+                                                            </div>
+
+                                                            <div class="mb-3">
+                                                                <label class="form-label"
+                                                                    for="descricao-instrucao">Descrição:</label>
+                                                                <textarea class="form-control" name="descricaoInstrucao"
+                                                                    id="descricao-instrucao" cols="30"
+                                                                    rows="10"><%= instrucao.descricaoInstrucao %></textarea>
+                                                            </div>
+
+                                                            <div class="input-group mb-3">
+                                                                <label class="input-group-text"
+                                                                    for="inputGroupFile01">Upload</label>
+                                                                <input type="file" class="form-control"
+                                                                    id="inputGroupFile01">
+                                                            </div>
+                                                            <!-- <button class="cancelar-instrucao" type="submit"> Cancelar</button> -->
+                                                            <div class="d-flex justify-content-end">
+                                                                <button type="button"
+                                                                    class="btn btn-success g-3 m-2 confirmar-cadastro"
+                                                                    data-toggle="modal"
+                                                                    data-target="#exampleModalCenter" id="photoBtn"
+                                                                    type="button"><svg
+                                                                        xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                        height="16" fill="currentColor"
+                                                                        class="bi bi-check-lg" viewBox="0 0 16 16">
+                                                                        <path
+                                                                            d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z" />
+                                                                    </svg> Salvar</button>
+                                                                <button type="button" class="btn btn-danger g-3 m-2"
+                                                                    action="/home/index"><svg
+                                                                        xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                        height="16" fill="currentColor" class="bi bi-x"
+                                                                        viewBox="0 0 16 16">
+                                                                        <path
+                                                                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                                                                    </svg> Cancelar</button>
+                                                            </div>
+                                                    </form>
                                 </div>
-                                <%- include('includes/messages'); %>
-
-                                    <% if(instrucao._id) { %>
-                                        <form class="formulario-novaInstrucao" id="formulario-novaInstrucao"
-                                            action="/novaInstrucao/edit/<%= instrucao._id %>" method="POST">
-                                            <% } else { %>
-                                                <form class="formulario-novaInstrucao" id="formulario-novaInstrucao"
-                                                    action="/novaInstrucao/register" method="POST">
-                                                    <% } %>
-                                                        <!-- <form class="formulario-novaInstrucao" action="/novaInstrucao/register" id="formulario-novaInstrucao" method="POST"> -->
-                                                        <div class="mb-3">
-                                                            <input type="hidden" name="inputCnpjEmpresa" value=<%= user.inputCnpjEmpresa %>>
-                                                            <input class="form-control" type="hidden" name="_csrf"
-                                                                value=<%=csrfToken %>>
-                                                            <label class="form-label"
-                                                                for="categoria-instrucao">Categoria:</label>
-                                                            <input class="form-control"
-                                                                value="<%= instrucao.categoriaInstrucao %>" type="text"
-                                                                id="categoria-instrucao" name="categoriaInstrucao">
-
-
-                                                        </div>
-
-                                                        <div class="mb-3">
-                                                            <label class="form-label"
-                                                                for="tema-instrucao">Título:</label>
-                                                            <input class="form-control"
-                                                                value="<%= instrucao.temaInstrucao %>" type="text"
-                                                                id="tema-instrucao" name="temaInstrucao">
-
-                                                        </div>
-
-                                                        <div class="mb-3">
-                                                            <label class="form-label"
-                                                                for="descricao-instrucao">Descrição:</label>
-                                                            <textarea class="form-control" name="descricaoInstrucao"
-                                                                id="descricao-instrucao" cols="30"
-                                                                rows="10"><%= instrucao.descricaoInstrucao %></textarea>
-                                                        </div>
-                                                        
-                                                        <div class="input-group mb-3">
-                                                            <label class="input-group-text" for="inputGroupFile01">Upload</label>
-                                                            <input type="file" class="form-control" id="inputGroupFile01">
-                                                          </div>
-                                                        <!-- <button class="cancelar-instrucao" type="submit"> Cancelar</button> -->
-                                                        <div class="d-flex justify-content-end">
-                                                            <button type="submit" class="btn btn-success g-3 m-2"><svg xmlns="http://www.w3.org/2000/svg"
-                                                                width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
-                                                                <path
-                                                                  d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z" />
-                                                              </svg> Salvar</button>
-                                                            <button type="submit" class="btn btn-danger g-3 m-2" action="/home/index"><svg
-                                                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                                                class="bi bi-x" viewBox="0 0 16 16">
-                                                                <path
-                                                                  d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-                                                              </svg> Cancelar</button>
-                                                          </div>
-                                                </form>
-
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="static">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Confirmação</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Deseja salvar as alterações?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="btnSalvarModal1" type="button" class="btn btn-primary">Salvar</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                         </div>
                     </div>
                 </div>
             </div>
 
-        </section>
-        <%- include('includes/footer') %>
+
+            <script type="text/javascript">
+                document.getElementById('btnSalvarModal1').addEventListener('click', function (event) {
+                    event.preventDefault(); // Impede o envio do formulário
+
+                    // Enviar os dados do formulário para o servidor
+                    document.getElementById('formulario-novaInstrucao').submit();
+                });
+            </script>
+
+            <%- include('includes/footer') %>
