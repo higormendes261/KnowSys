@@ -25,7 +25,7 @@
 
           <div class="col-lg-8 my-3">
 
-            <div class="m-5" id="titulo">
+            <div id="titulo">
               <img class="img-thumbnail" src="/assets/img/building 1.png" alt="">
               <h2>Informações da empresa</h2>
             </div>
@@ -39,29 +39,31 @@
                   <% } else { %>
                     <form action="/cadastro/register" id="formulario-editarEmpresa" method="POST">
                       <% } %>
-                        <input type="hidden" name="_csrf" value=<%=csrfToken %>>
-                        <input type="hidden" name="tipoUsuario" value="usuario">
-                        <input type="hidden" name="inputNomeEmpresa" value=<%=user.inputNomeEmpresa %>>
-                        <input type="hidden" name="inputCnpjEmpresa" value=<%=user.inputCnpjEmpresa %>>
-                        <input type="hidden" name="inputEmailEmpresa" value=<%=user.inputEmailEmpresa %>>
+                        <input type="hidden" name="_csrf" value=<%=csrfToken%>>
+                        <input type="hidden" name="tipoUsuario" value="moderador">
+                        <input type="hidden" id="inputEmailModerador" name="email" value=<%=user.email%>>
+                        <input type="hidden" id="inputNomeModerador" name="inputNome" value=<%=user.inputNome%>>
+                        <input type="hidden" id="inputMatriculaModerador" name="inputMatricula" value=<%=user.inputMatricula%>>
+                        <input type="hidden" id="inputSenhaModerador" name="password" value=<%=user.password%>>
+                        <input type="hidden" id="input-confirmacaoSenhaModerador" name="inputConfirmacaoSenhaModerador" value=<%=user.password%>>
 
                         <div class="row">
                           <div class="col-12 form-group">
-                            <label>Nome</label>
-                            <input value="<%= user.inputNomeEmpresa %>" type="text" class="form-control"
-                              name="inputNome">
+                            <label>Nome ou razão social:</label>
+                            <input value="<%= user.inputNomeEmpresa %>" type="text" class="form-control" id="inputNomeEmpresa" name="inputNomeEmpresa"
+                            >
                           </div>
                           <div class="col-md-6 form-group">
                             <label>CNPJ</label>
-                            <input value="<%= user.inputCnpjEmpresa %>" type="text" class="form-control"
-                              name="inputMatricula">
+                            <input value="<%= user.inputCnpjEmpresa %>" type="text" class="form-control" id="input-cnpjEmpresa" name="inputCnpjEmpresa">
                           </div>
                           <div class="col-md-6 form-group">
                             <label>Email</label>
-                            <input value="<%= user.inputEmailEmpresa %>" type="email" class="form-control" name="email">
+                            <input value="<%= user.inputEmailEmpresa %>" type="email" class="form-control" id="input-emailEmpresa" name="inputEmailEmpresa">
                           </div>
 
                         </div>
+
                         <div>
                           <button type="button" class="btn btn-success g-3 m-2 confirmar-cadastro" data-toggle="modal"
                             data-target="#exampleModalCenter" id="photoBtn" type="button"><svg

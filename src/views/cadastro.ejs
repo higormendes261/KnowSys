@@ -1,91 +1,140 @@
 <%- include('includes/head') %>
-<%- include('includes/nav') %>
-<%- include('includes/botaoVoltar') %>
-<head>
-  <link rel="stylesheet" href="/assets/css/style-cadastro.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
-  <script type="text/javascript">
-    $("#input-cnpjEmpresa").mask("00.000.000/0000-00");
-  </script>
-</head>
-<form class="formulario-cadastro" action="/cadastro/register" id="formulario-cadastro" method="POST">
-  <input type="hidden" name="_csrf" value=<%= csrfToken %>>
-  <input type="hidden" name="tipoUsuario" value="administrador">
-  <div>
-    <img src="/assets/img/cadastro.png" alt="Icone de cadastro">
-    <h1>Cadastro</h1>
-  </div>
-  <%- include('includes/messages'); %>
-  <label for="inputNomeEmpresa">Razão Social ou Nome fantasia:</label>
-  <input type="text" id="inputNomeEmpresa" name="inputNomeEmpresa" placeholder="Sua empresa" />
+  <%- include('includes/nav') %>
+    <%- include('includes/botaoVoltar') %>
 
-  <section class="section-labelDeDadosDaEmpresa">
-    <label for="input-cnpjEmpresa" class="labelCnpj">CNPJ:</label>
-    <label for="input-emailEmpresa" class="labelEmail">Email:</label>
-  </section>
-  <section class="section-inputDadosDaEmpresa">
-    <input type="text" id="input-cnpjEmpresa" name="inputCnpjEmpresa" placeholder="xx.xxx.xxx/xxxx-xx" />
-    <input type="email" id="input-emailEmpresa" name="inputEmailEmpresa" placeholder="exemplo@exemplo.com" />
-  </section>
+      <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+        <script type="text/javascript">
+          $("#input-cnpjEmpresa").mask("00.000.000/0000-00");
+        </script>
+        <style>
+          .container img {
+            background-color: #3CDDDD;
+            border-radius: 15px;
+            margin: 0 10px 0 0;
+          }
 
-  <h2 class="subtitulo">Moderador(a)</h2>
-  <section class="label-moderador">
-    <label for="inputNome" class="label-nomeModerador">Nome:</label>
-    <label for="inputMatricula">Matrícula:</label>
-  </section>
+          .container #titulo {
+            display: flex;
+            align-items: center;
 
-  <section class="section-dadosModerador">
-    <input type="text" id="inputNomeModerador" name="inputNome" />
-    <input type="text" id="inputMatriculaModerador" name="inputMatricula" />
-  </section>
-  <label for="inputEmailModerador">Email:</label>
-  <input type="email" id="inputEmailModerador" name="email" placeholder="exemplo@exemplo.com" />
-  <section class="label-moderador">
-    <label for="inputSenhaModerador" class="label-senhaModerador">Senha:</label>
-    <label for="input-confirmacaoSenhaModerador">Confirmação de senha:</label>
-  </section>
+          }
+        </style>
 
-  <section class="section-dadosModerador">
-    <input type="password" id="inputSenhaModerador" name="password" />
-    <input type="password" id="input-confirmacaoSenhaModerador" name="inputConfirmacaoSenhaModerador" />
-  </section>
-  <button class="confirmar-cadastro" data-toggle="modal"
-    data-target="#exampleModalCenter" id="photoBtn"
-    style="border-radius: 15px; width: 190px;" type="button">Salvar</button>
-</form>
-</div>
+      </head>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-  aria-hidden="true" data-backdrop="static">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Confirmação</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-2"></div>
+
+          <div class="col-lg-8 my-3">
+
+            <div class="mb-4" id="titulo">
+              <img class="img-thumbnail" src="/assets/img/cadastro.png" alt="Icone de cadastro">
+              <h1>Cadastro</h1>
+            </div>
+
+            <form class="formulario-cadastro" action="/cadastro/register" id="formulario-cadastro" method="POST">
+
+              <input type="hidden" name="_csrf" value=<%=csrfToken %>>
+              <input type="hidden" name="tipoUsuario" value="administrador">
+              <%- include('includes/messages'); %>
+
+                <div class="row">
+
+                  <div class="col-12 form-group">
+                    <label>Razão Social ou Nome fantasia:</label>
+                    <input type="text" class="form-control" name="inputNomeEmpresa" id="inputNomeEmpresa"
+                      name="inputNomeEmpresa" placeholder="Sua empresa" />
+                  </div>
+
+                  <div class="col-md-6 form-group">
+                    <label>CNPJ</label>
+                    <input type="text" class="form-control" id="input-cnpjEmpresa" name="inputCnpjEmpresa"
+                      placeholder="xx.xxx.xxx/xxxx-xx">
+                  </div>
+
+                  <div class="col-md-6 form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" id="input-emailEmpresa" name="inputEmailEmpresa"
+                      placeholder="exemplo@exemplo.com">
+                  </div>
+
+                  <h3 class="text-center col-md-2 my-2">Moderador(a)</h3>
+
+                  <div class="col-12 form-group">
+                    <label>Nome do moderador</label>
+                    <input type="text" class="form-control" id="inputNomeModerador" name="inputNome">
+                  </div>
+
+                  <div class="col-md-6 form-group">
+                    <label>Matricula</label>
+                    <input type="text" class="form-control" id="inputMatriculaModerador" name="inputMatricula">
+                  </div>
+
+                  <div class="col-md-6 form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" id="inputEmailModerador" name="email"
+                      placeholder="exemplo@exemplo.com">
+                  </div>
+
+                  <div class="col-md-6 form-group">
+                    <label>Senha</label>
+                    <input type="password" class="form-control" id="inputSenhaModerador" name="password">
+                  </div>
+
+                  <div class="col-md-6 form-group">
+                    <label>Confirmação de senha</label>
+                    <input type="password" class="form-control" id="input-confirmacaoSenhaModerador"
+                      name="inputConfirmacaoSenhaModerador">
+                  </div>
+                </div>
+                <div class="d-flex justify-content-end">
+                  <button type="button" class="btn btn-success g-3 m-2 confirmar-cadastro" data-toggle="modal"
+                    data-target="#exampleModalCenter" id="photoBtn" type="button"><svg
+                      xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                      class="bi bi-check-lg" viewBox="0 0 16 16">
+                      <path
+                        d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z" />
+                    </svg> Salvar</button>
+                </div>
+            </form>
+          </div>
+          <div class="col-lg-2"></div>
+        </div>
       </div>
-      <div class="modal-body">
-        <p>Deseja realmente salvar?</p>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Confirmação</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Deseja realmente salvar?</p>
+            </div>
+            <div class="modal-footer">
+              <button id="btnSalvarModal" type="button" class="btn btn-primary">Salvar</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="modal-footer">
-        <button id="btnSalvarModal" type="button" class="btn btn-primary">Salvar</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-      </div>
-    </div>
-  </div>
-</div>
-  
 
-<script type="text/javascript">
-  document.getElementById('btnSalvarModal').addEventListener('click', function(event) {
-    event.preventDefault(); // Impede o envio do formulário
 
-    // Enviar os dados do formulário para o servidor
-    document.getElementById('formulario-cadastro').submit();
-  });
-</script>
+      <script type="text/javascript">
+        document.getElementById('btnSalvarModal').addEventListener('click', function (event) {
+          event.preventDefault(); // Impede o envio do formulário
 
-<%- include('includes/footer') %>
+          // Enviar os dados do formulário para o servidor
+          document.getElementById('formulario-cadastro').submit();
+        });
+      </script>
+
+      <%- include('includes/footer') %>

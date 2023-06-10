@@ -12,6 +12,7 @@ const homeController = require('./src/controllers/homeController');
 const instrucaoController = require('./src/controllers/instrucaoController');
 const indexController = require('./src/controllers/indexController');
 const sumarioInstrucaoController = require('./src/controllers/sumarioInstrucaoController');
+const imagemController = require('./src/controllers/imagemController');
 
 
 
@@ -57,6 +58,9 @@ route.get('/home/index', homeController.index);
 
 //Rota para o index
 route.get('/index', indexController.index);
+
+//Rota para fotos
+route.get('/fotos', imagemController.index);
 
 
 

@@ -46,7 +46,6 @@ class Cadastro {
 
   valida() {
     // Validação
-
     this.cleanUp();
     if(this.body.inputNomeEmpresa.length < 1){
       this.errors.push('O nome da empresa não pode ser vazio.');
@@ -66,7 +65,8 @@ class Cadastro {
     // O e-mail precisa ser válido
     if(!validator.isEmail(this.body.email)) this.errors.push('E-mail inválido.');
     // A senha precisa ter entre 3 e 50
-    if(this.body.password.length < 3 || this.body.password.length > 50) {
+  
+    if(this.body.password.length < 3) {
       this.errors.push('A senha precisa ter entre 3 e 50 caracteres.');
     }
 
@@ -111,10 +111,8 @@ exports.delete = async function(req, res) {
 
 Cadastro.prototype.edit = async function(id) {
   if(typeof id !== 'string') return;
-
   this.valida();
   if(this.errors.length > 0) return;
-  
 };
 
 // Métodos estáticos
