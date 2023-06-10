@@ -47,7 +47,7 @@ exports.register = async function(req, res) {
         return;
       }
   
-      req.flash('success', 'Instrucao editado com sucesso.');
+      req.flash('success', 'Instrução editada com sucesso.');
       req.session.save(() => res.redirect(`/instrucao/index`));
       return;
     } catch(e) {
@@ -62,7 +62,7 @@ exports.register = async function(req, res) {
     const instrucao = await Instrucao.delete(req.params.id);
     if(!instrucao) return res.render('404');
   
-    req.flash('success', 'Instrucao apagado com sucesso.');
+    req.flash('success', 'Instrução apagada com sucesso.');
     req.session.save(() => res.redirect('back'));
     return;
   };

@@ -76,5 +76,30 @@ Instrucao.delete = async function(id) {
   return instrucao;
 };
 
+//Filtros
+
+
+
+
+
+Instrucao.filtrarInstrucoes = async function(pesquisa) {
+
+  const instrucoes = await InstrucaoModel.find()
+
+    var instrucaoFiltrado = []
+    
+    instrucoes.forEach(instrucao => {
+      if ((instrucao.temaInstrucao.toUpperCase()).includes(pesquisa.toUpperCase()) ||  (instrucao.categoriaInstrucao.toUpperCase()).includes(pesquisa.toUpperCase())) {
+        instrucaoFiltrado.push(instrucao)
+
+      }
+    }
+    )
+
+    return instrucaoFiltrado
+
+};
+
+
 
 module.exports = Instrucao;

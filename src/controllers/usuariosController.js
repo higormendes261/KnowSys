@@ -11,7 +11,5 @@ exports.buscarPorNome = async(req, res) => {
 
   const usuario = await Usuario.filtrarUsuarios( nome);
   res.render('usuarios', { usuario });
-
-  console.log(usuario)
   
 };

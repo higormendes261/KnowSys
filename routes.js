@@ -52,6 +52,8 @@ route.post('/novaInstrucao/edit/:id', loginRequired, novaInstrucaoController.edi
 route.get('/novaInstrucao/delete/:id', loginRequired, novaInstrucaoController.delete);
 route.get('/instrucao2/index/:id', loginRequired, instrucaoController.editIndex);
 route.get('/sumarioInstrucao/index', loginRequired, sumarioInstrucaoController.index);
+route.get('/instrucao/filter', loginRequired, instrucaoController.buscarPorInstrucao);
+
 
 //Rota para home
 route.get('/home/index', homeController.index);

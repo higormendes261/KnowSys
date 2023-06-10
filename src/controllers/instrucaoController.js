@@ -28,3 +28,13 @@ exports.editIndex = async function(req, res) {
     // Trate qualquer erro ocorrido
   }
 };
+
+//Filtros
+exports.buscarPorInstrucao = async(req, res) => {
+  const nome = req.query.pesquisarInstrucao.toUpperCase();
+
+  const instrucao = await Instrucao.filtrarInstrucoes(nome);
+  res.render('instrucao', { instrucao });
+
+  
+};
