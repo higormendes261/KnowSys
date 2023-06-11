@@ -31,14 +31,26 @@ exports.register = async function(req, res) {
   }
 };
 
+
+
 exports.editIndex = async function(req, res) {
-  if(!req.params.id) return res.render('404');
+  if (!req.params.id) return res.render('404');
 
-  const usuario = await Cadastro.buscaPorId(req.params.id);
-  if(!usuario) return res.render('404');
+  try {
+    const usuario = await Cadastro.buscaPorId(req.params.id);
+    if (!usuario) return res.render('404');
 
-  res.render('editarUsuario', { usuario });
+    
+    // Salva a instrução atualizada no banco de dados
+    await usuario.save();
+
+    res.render('editarUsuario', { usuario});
+  } catch (error) {
+    // Trate qualquer erro ocorrido
+  }
 };
+
+
 
 exports.edit = async function(req, res) {
   try {
