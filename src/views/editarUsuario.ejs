@@ -9,7 +9,7 @@
 
     <div class="col-lg-8 my-3">
       <h1 class="text-center">Usuários</h1>
-      <p class="text-center lead">Crie ou edite os usuário abaixo.</p>
+      
 
       <%- include('includes/messages') %>
 
@@ -23,26 +23,31 @@
         <input type="hidden" name="inputNomeEmpresa" value=<%= user.inputNomeEmpresa %>>
         <input type="hidden" name="inputCnpjEmpresa" value=<%= user.inputCnpjEmpresa %>>
         <input type="hidden" name="inputEmailEmpresa" value=<%= user.inputEmailEmpresa %>>
-        <div class="form-group">
+        <div class="row">
+        <div class="col-md-12 form-group">
           <label>Nome</label>
           <input value="<%= usuario.inputNome %>" type="text" class="form-control" name="inputNome">
         </div>
-        <div class="form-group">
+        <div class="col-md-6 form-group">
           <label>Matrícula</label>
           <input value="<%= usuario.inputMatricula %>" type="text" class="form-control" name="inputMatricula">
         </div>
-        <div class="form-group">
+        <div class="col-md-6 form-group">
           <label>Email</label>
           <input value="<%= usuario.email %>" type="email" class="form-control" name="email">
         </div>
-        <div class="form-group">
+
+        <div class="col-md-6 form-group">
           <label>Senha</label>
           <input value="<%= usuario.password%>" type="password" class="form-control" name="password">
         </div>
-        <div class="form-group">
+  
+        <div class="col-md-6 form-group">
           <label>Confirme a senha</label>
-          <input value="<%= usuario.password%>" type="password" class="form-control" name="inputConfirmacaoSenhaModerador">
+          <input value="<%= usuario.password%>" type="password" id="disabledTextInput" class="form-control" name="inputConfirmacaoSenhaModerador">
         </div>
+      
+      </div>
         <div class="d-flex justify-content-end">
           <button  class="btn btn-success g-3 m-2 confirmar-cadastro" data-toggle="modal"
         data-target="#exampleModalCenter" id="photoBtn" type="button"
