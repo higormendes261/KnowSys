@@ -38,7 +38,7 @@
                                             <% } %>
 
                                                 <input type="hidden" name="_csrf" value=<%=csrfToken %>>
-
+fdfd
                                                 <h2 class="mt-5">
                                                     <%= instrucao.temaInstrucao %>
                                                 </h2>
@@ -46,6 +46,7 @@
                                                 <div class="lead text-break">
                                                    <p> <%= instrucao.descricaoInstrucao%></p>
                                                 </div>
+                                                <% console.log(instrucao) %>
 
                                                 <% if(user.tipoUsuario==="administrador") { %>
                                                     <div class="d-flex justify-content-end">

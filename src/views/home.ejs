@@ -34,34 +34,37 @@
               <h2 class="text-center my-4">Temas mais acessados</h2>
             </div>
           </div>
+          <% console.log(instrucao) %>
+            <% instrucao.sort((a, b)=> b.contador - a.contador) %>
+              <!-- Ordena as instruções pelo contador de forma decrescente -->
+              <% if (instrucao.length> 0) { %>
+                <div class="card-deck mb-3 text-center">
+                  <% let contador=0; %>
+                    <% instrucao.forEach((instrucao)=> { %>
+                      <% if (instrucao.inputCnpjEmpresa==user.inputCnpjEmpresa && contador < 6) { %>
+                        <div class="card mb-4 box-shadow">
+                          <div class="card-deck">
+                            <div class="card-body">
+                              <h5 class="card-title mx-auto">
+                                <%= instrucao.categoriaInstrucao.substr(0, 1) %>
+                              </h5>
+                              <a style="color: black;" href="/instrucao2/index/<%= instrucao._id %>">
+                                <small class="text-body-secondary">
+                                  <%= instrucao.categoriaInstrucao %>
+                                </small>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                        <% contador++; %>
+                          <% } %>
+                            <% }); %>
 
-          <% instrucao.sort((a, b)=> b.contador - a.contador) %>
-            <!-- Ordena as instruções pelo contador de forma decrescente -->
-            <% if (instrucao.length> 0) { %>
-              <div class="card-deck mb-3 text-center">
-                <% instrucao.slice(0, 6).forEach((instrucao)=> { %>
-                  <!-- Mostra apenas as 4 primeiras instruções com contador maior -->
-                  <% if ( instrucao.inputCnpjEmpresa == user.inputCnpjEmpresa) { %>
-                    <div class="card mb-4 box-shadow">
-                      <div class="card-deck">
-                        <div class="card-body">
-                          <h5 class="card-title mx-auto">
-                            <%= instrucao.categoriaInstrucao.substr(0, 1) %>
-                          </h5>
-                        <a style="color: black;" href="/instrucao2/index/<%= instrucao._id %>"><small
-                            class="text-body-secondary">
-                            <%= instrucao.categoriaInstrucao %>
-                          </small></a>
-                      </div>
-                      </div>
-                      
-                    </div>
-                    <% } %>
-                      <% }); %>
-              </div>
-              <% } else { %>
-                <p class="text-center lead">Não existem instruções cadastradas.</p>
-                <% } %>
+
+                </div>
+                <% } else { %>
+                  <p class="text-center lead">Não existem instruções cadastradas.</p>
+                  <% } %>
         </div>
 
 

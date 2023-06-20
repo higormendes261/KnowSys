@@ -1,3 +1,5 @@
 {
-    "liveServer.settings.port": 5501
+    "liveServer.settings.port": 5501,
+    "appService.defaultWebAppToDeploy": "/subscriptions/087b4944-ac3b-4bc5-9595-e4b78e42cdd1/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/knowsys",
+    "appService.deploySubpath": "."
 }
