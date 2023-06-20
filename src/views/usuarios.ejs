@@ -55,6 +55,7 @@
 
                   <% if(usuario.length> 0) { %>
                     <% usuario.forEach(usuario=> { %>
+                      <% if(usuario.inputCnpjEmpresa == user.inputCnpjEmpresa) { %>
                       <% if (usuario.tipoUsuario==="administrador" ) { return; } %>
                         <tbody>
                           <td>
@@ -86,6 +87,7 @@
                                 </svg></a></td>
                               </tr>
                             </form>
+                            <% }%>
                           <% }); %>
                         </tbody>
               </table>
